@@ -5,49 +5,15 @@
 
 <mapper namespace="com.backend.backend.mapper.ActionMapper">
 
-    <resultMap id="ActionResultMap" type="com.backend.backend.Entity.Action">
-        <id property="id" column="id"/>
-        <result property="code" column="code"/>
-        <result property="name" column="name"/>
-        <result property="description" column="description"/>
-    </resultMap>
-
-
-    <select id="findAll" resultMap="ActionResultMap">
-        SELECT id, code, name, description
-        FROM action
+    <select id="findNotUseMapping">
+        SELECT a.*
+        FROM actions a
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM mapping_items mi
+            WHERE mi.action_id = a.id
+              AND mi.mapping_id = #{mappingId}
+        );
     </select>
-
-
-    <select id="findById" resultMap="ActionResultMap">
-        SELECT id, code, name, description
-        FROM action
-        WHERE id = #{id}
-    </select>
-
-    <select id="findByCode" resultMap="ActionResultMap">
-        SELECT id, code, name, description
-        FROM action
-        WHERE code = #{code}
-    </select>
-
-    <insert id="insert" parameterType="com.backend.backend.Entity.Action"
-            useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO action (code, name, description)
-        VALUES (#{code}, #{name}, #{description})
-    </insert>
-
-    <update id="update" parameterType="com.backend.backend.Entity.Action">
-        UPDATE action
-        SET code = #{code},
-            name = #{name},
-            description = #{description}
-        WHERE id = #{id}
-    </update>
-
-    <delete id="delete">
-        DELETE FROM action
-        WHERE id = #{id}
-    </delete>
 
 </mapper>

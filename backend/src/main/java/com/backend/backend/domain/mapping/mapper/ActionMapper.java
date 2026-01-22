@@ -9,10 +9,6 @@ import java.util.List;
 @Mapper
 public interface ActionMapper {
 
-    List<Action> findAll();
-    Action findById(@Param("id") Long id);
-    Action findByCode(@Param("code") String code);
-    int insert(Action action);
-    int update(Action action);
-    int delete(@Param("id") Long id);
+    List<Action> findNotUseMapping(@Param("mappingId") int mappingId);
+
 }

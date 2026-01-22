@@ -9,11 +9,5 @@ import java.util.List;
 @Mapper
 public interface MappingMapper {
 
-    List<Mapping> findAll();
-    Mapping findById(@Param("id") Long id);
-    List<Mapping> findByAccountId(@Param("accountId") Long accountId);
-    Mapping findActiveByAccountId(@Param("accountId") Long accountId);
-    int insert(Mapping mapping);
-    int update(Mapping mapping);
-    int delete(@Param("id") Long id);
+
 }

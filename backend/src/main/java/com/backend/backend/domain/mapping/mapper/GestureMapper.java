@@ -9,10 +9,6 @@ import java.util.List;
 @Mapper
 public interface GestureMapper {
 
-    List<Gesture> findAll();
-    Gesture findById(@Param("id") Long id);
-    Gesture findByCode(@Param("code") String code);
-    int insert(Gesture gesture);
-    int update(Gesture gesture);
-    int delete(@Param("id") Long id);
+
+    List<Gesture> findNotUseMapping(@Param("mappingId")int mappingId);
 }

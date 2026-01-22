@@ -1,10 +1,10 @@
-package com.backend.backend.entity;
+package com.backend.backend.domain.mapping.entity;
 
+import com.backend.backend.domain.auth.entity.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Getter
